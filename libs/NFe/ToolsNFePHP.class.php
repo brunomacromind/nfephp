@@ -783,8 +783,12 @@ class ToolsNFePHP extends CommonNFePHP
             $this->danfefont = $aConfig['danfeFonte'];
             $this->danfeprinter = $aConfig['danfePrinter'];
             $this->schemeVer = $aConfig['schemes'];
-            if (isset($aConfig['certsDir'])) $this->certsDir =  $aConfig['certsDir'];
-            if (isset($aConfig['imgDir'])) $this->imgDir =  $aConfig['imgDir'];
+            if (isset($aConfig['certsDir'])) {
+                $this->certsDir =  $aConfig['certsDir'];
+            }
+            if (isset($aConfig['imgDir'])) {
+                $this->imgDir =  $aConfig['imgDir'];
+            }
             if ($aConfig['proxyIP'] != '') {
                 $this->aProxy = array(
                     'IP'=>$aConfig['proxyIP'],
@@ -834,8 +838,12 @@ class ToolsNFePHP extends CommonNFePHP
                 $this->danfefont = $danfeFonte;
                 $this->danfeprinter = $danfePrinter;
                 $this->schemeVer = $schemes;
-                if (isset($certsDir)) $this->certsDir =  $certsDir;
-                if (isset($imgDir)) $this->imgDir =  $imgDir;
+                if (isset($certsDir)) {
+                    $this->certsDir = $certsDir;
+                }
+                if (isset($imgDir)) {
+                    $this->imgDir =  $imgDir;
+                }
                 if ($proxyIP != '') {
                     $this->aProxy = array(
                         'IP'=>$proxyIP,
@@ -872,13 +880,19 @@ class ToolsNFePHP extends CommonNFePHP
         //carrega o caminho para os schemas
         $this->xsdDir = $this->raizDir.'schemes'. DIRECTORY_SEPARATOR;
         //carrega o caminho para os certificados caso não tenha sido passado por config
-        if (empty($this->certsDir)) $this->certsDir =  $this->raizDir.'certs'. DIRECTORY_SEPARATOR;
+        if (empty($this->certsDir)) {
+            $this->certsDir =  $this->raizDir.'certs'. DIRECTORY_SEPARATOR;
+        }
         //carrega o caminho para as imegens
-        if (empty($this->imgDir)) $this->imgDir =  $this->raizDir.'images'. DIRECTORY_SEPARATOR;
+        if (empty($this->imgDir)) {
+            $this->imgDir =  $this->raizDir.'images'. DIRECTORY_SEPARATOR;
+        }
         //verifica o ultimo caracter da variável
         // se não for um DIRECTORY_SEPARATOR então colocar um
         foreach(array('certsDir','imgDir','arqDir') as $dir) {
-            if (substr($this->$dir, -1, 1) != DIRECTORY_SEPARATOR) $this->$dir .= DIRECTORY_SEPARATOR;
+            if (substr($this->$dir, -1, 1) != DIRECTORY_SEPARATOR) {
+                $this->$dir .= DIRECTORY_SEPARATOR;
+            }
         }
         // monta a estrutura de diretorios utilizados na manipulação das NFe
         $this->entDir=$this->arqDir.$sAmb.DIRECTORY_SEPARATOR.'entradas'.DIRECTORY_SEPARATOR;
